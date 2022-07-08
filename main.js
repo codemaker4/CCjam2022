@@ -87,6 +87,10 @@ function draw() {
     world.draw();
     water.draw();
 
+    image(getSprite("potion-yellow"), 850, 400, 32, 32)
+    image(getSprite("potion-blue"), 400, 250, 32, 32)
+    image(getSprite("boeken-1"), 250, 400, 32, 32)
+
     if(frameCount % updateFrames == 0){
         doPlayerUpdate(JSON.stringify(world.getPlayer(thisPlayerName1)))
     }
