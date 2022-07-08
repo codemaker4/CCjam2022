@@ -1,4 +1,3 @@
-let players = [];
 let thisPlayerName = `player#${Math.floor(Math.random()*10000)}`;
 
 let world;
@@ -63,6 +62,6 @@ function draw() {
     world.draw();
 
     if(frameCount % updateFrames == 0){
-        playerUpdate(JSON.stringify(world.getPlayer(thisPlayerName)))
+        doPlayerUpdate(JSON.stringify(world.getPlayer(thisPlayerName)))
     }
   }
