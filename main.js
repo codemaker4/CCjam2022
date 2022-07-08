@@ -2,6 +2,7 @@ let thisPlayerName1 = `player#${Math.floor(Math.random()*10000)}`;
 let thisPlayerName2 = `player#${Math.floor(Math.random()*10000)}`;
 
 let world;
+let water;
 
 const countdown = 30
 let remainingtime = countdown
