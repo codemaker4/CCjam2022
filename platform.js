@@ -19,7 +19,7 @@ class Platform {
                 this.size.y, // height
                 0, // source x
                 0, // source y
-                min(this.sprite.width, this.size.x-xOff), // source width
+                min(this.sprite.width, this.size.x-xOff)*2, // source width
                 this.size.y*2, // source height
             )
         }

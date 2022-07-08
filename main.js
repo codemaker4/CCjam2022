@@ -11,8 +11,8 @@ function setup() {
 
     world.platforms = [
         new Platform(createVector(world.size.x/2, world.size.y), createVector(world.size.x*0.9, 20), getSprite("platform-1")),
-        new Platform(createVector(world.size.x/2, world.size.y / 4 * 3), createVector(200, 32), getSprite("platform-1"))
-
+        new Platform(createVector(world.size.x/2, world.size.y / 4 * 3), createVector(200, 32), getSprite("platform-1")),
+        new Platform(createVector(world.size.x/2, world.size.y / 5), createVector(186/2, 32), getSprite("drawer"))
     ];
 
     setTimeout(() => {
@@ -53,8 +53,9 @@ function windowResized() {
 }
 
 function draw() {
-    background(127);
+    background(123)
     scale(0.8);
+    image(getSprite("background"), 0,0, world.size.x, world.size.y);
     noFill();
     stroke(0);
     strokeWeight(2);
