@@ -67,22 +67,26 @@ io.on('connection', (socket) => {
 
     socket.on('newPlayer', (name) => {
         console.log("New player ", name)
-        const gameCode = Array.from(socket.rooms)[1]
-        gameData[gameCode].push({"nickname":name})
-        // socket.in(gameCode).emit("newPlayer", name)
+        // const gameCode = Array.from(socket.rooms)[1]
+        // gameData[gameCode].push({"name":name})
+        // socket.emit("newPlayer", name)
     })
 
 
     socket.on('playerUpdate', (data) => {
-        console.log(data)
         const gameCode = Array.from(socket.rooms)[1]
-        gameData[gameCode].forEach(player => {
-            if(player.name == data.name){
-                player = data
-            }
-        });
-        Object.keys(gameData[gameCode])
-        socket.in(gameCode).emit("playerUpdate", gameData[gameCode])
+        if(gameData[gameCode].length === 0){
+            gameData[gameCode].push(data)
+        } else {
+            gameData[gameCode].forEach(player => {
+                if(player["name"] == data["name"]){
+                    gameData[gameCode][player] = data
+                }
+            });
+        }
+        console.log(gameData[gameCode])
+        socket.emit("playerUpdate", gameData[gameCode])
+
     })
 })
 
