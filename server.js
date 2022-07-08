@@ -26,6 +26,10 @@ app.get('/', (req, res) => {
     res.sendFile(__dirname + '/index.html')
 })
 
+app.get('/index.html', (req, res) => {
+    res.sendFile(__dirname + '/index.html')
+})
+
 app.get('/main.js', (req, res) => {
     res.sendFile(__dirname + '/main.js')
 })
@@ -48,6 +52,14 @@ app.get('/socket.js', (req, res) => {
 
 app.get('/platform.js', (req, res) => {
     res.sendFile(__dirname + '/platform.js')
+})
+
+app.get('/water.js', (req, res) => {
+    res.sendFile(__dirname + '/water.js')
+})
+
+app.get('/landing.html', (req, res) => {
+    res.sendFile(__dirname + '/landing.html')
 })
 
 app.get('/node_modules/socket.io/client-dist/socket.io.js', (req, res) => {
@@ -74,29 +86,29 @@ io.on('connection', (socket) => {
 
 
     socket.on('playerUpdate', (data) => {
-        const gameCode = Array.from(socket.rooms)[1]
-        data = JSON.parse(data)
+        // const gameCode = Array.from(socket.rooms)[1]
+        // data = JSON.parse(data)
 
-        if(gameData[gameCode].length === 0){
-            gameData[gameCode].push(data)
-        } else {
-            for(let i = 0; i < gameData[gameCode].length; i++){
-                if(gameData[gameCode][i]["name"] == data["name"]){
-                    gameData[gameCode].splice(i)
-                }
-                gameData[gameCode].push(data)
-                console.log(gameData)
+        // if(gameData[gameCode].length === 0){
+        //     gameData[gameCode].push(data)
+        // } else {
+        //     for(let i = 0; i < gameData[gameCode].length; i++){
+        //         if(gameData[gameCode][i]["name"] == data["name"]){
+        //             gameData[gameCode].splice(i)
+        //         }
+        //         gameData[gameCode].push(data)
+        //         console.log(gameData)
 
 
-            }
-            // gameData[gameCode].forEach(player => {
-            //     if(player["name"] == data["name"]){
-            //         gameData[gameCode][player["name"]]
-            //         console.log(gameData)
-            //         // console.log(JSON.parse(gameData[gameCode][player])["x"])
-            //     }
-            // });
-        }
+        //     }
+        //     // gameData[gameCode].forEach(player => {
+        //     //     if(player["name"] == data["name"]){
+        //     //         gameData[gameCode][player["name"]]
+        //     //         console.log(gameData)
+        //     //         // console.log(JSON.parse(gameData[gameCode][player])["x"])
+        //     //     }
+        //     // });
+        // }
         // io.emit("playerUpdate", gameData[gameCode])
 
     })

@@ -1,7 +1,11 @@
 body {
     height: 100vh;
     margin: 0;
-    background-color: #26464b;
+    background-image: url(assets/landing_background.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    -ms-interpolation-mode: nearest-neighbor;
+    image-rendering: pixelated;
 }
 
 .logo {
@@ -48,6 +52,7 @@ input {
 }
 
 .footer {
+    margin-top: 10vh;
     color: #f2f7da;
     size: 2vh;
     display: flex;
