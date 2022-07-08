@@ -1,6 +1,5 @@
 class Player {
-    constructor(world, name, pos, vel, color, holdButtons = [], pressButtons = []) {
-        this.world = world; // the world object this player is in.
+    constructor(name, pos, vel, color, holdButtons = [], pressButtons = []) {
         this.name = name; // float number 0 - 1, made with Math.random()
         this.pos = pos; // p5 vector
         this.vel = vel; // p5 vector
@@ -35,7 +34,7 @@ class Player {
         return this.size.copy().div(2);
     }
 
-    tick() {
+    tick(wprd) {
         this.vel.x *= 0.8
         this.vel.y += 0.3;
         if (this.holdButtons.includes("up") && this.framesSinceOnGround < 5) this.vel.y = -15;

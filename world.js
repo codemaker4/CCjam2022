@@ -12,7 +12,7 @@ class World {
     tick() {
         for (let i = 0; i < this.players.length; i++) {
             const player = this.players[i];
-            player.tick();
+            player.tick(this);
         }
     }
 
