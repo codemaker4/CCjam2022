@@ -25,7 +25,8 @@ function preload(){
         new Sprite("assets/background.png", "background"),
         new Sprite("assets/jar.png", "jar"),
         new Sprite("assets/drawer.png", "drawer"),
-        new Sprite("assets/water.png", "water")
+        new Sprite("assets/water.png", "water"),
+        new Sprite("assets/Peak Shit.png", "shit")
     ]
 
     addAnim("assets/fly_1_flying/fly_1_flying", "fly1_", 6);
