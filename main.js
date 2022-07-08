@@ -15,8 +15,8 @@ const updateFrames = 60
 function setup() {
     createCanvas(innerWidth, innerHeight);
 
-    sounds.boink2 = loadSound("assets/boink.mp3");
-    sounds.boink = loadSound("assets/sound/boink.mp3");
+    sounds.boink2 = loadSound("static/assets/boink.mp3");
+    sounds.boink = loadSound("static/assets/sound/boink.mp3");
 
     world = new World();
     water = new Water(world.size.y * 2);

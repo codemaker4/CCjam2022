@@ -1,7 +1,7 @@
 body {
     height: 100vh;
     margin: 0;
-    background-image: url(assets/landing_background.png);
+    background-image: url(static/assets/landing_background.png);
     background-repeat: no-repeat;
     background-size: cover;
     -ms-interpolation-mode: nearest-neighbor;
