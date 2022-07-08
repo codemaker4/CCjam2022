@@ -88,7 +88,7 @@ function draw() {
     scale(Math.min(width/world.size.x, height/world.size.y) * 0.8);
     translate(-world.size.x/2, -world.size.y/2)
     
-    image(getSprite("potion-yellow"), 850, 400, 32, 32)
+    image(getSprite("potion-yellow"), 800, 400, 32, 32)
     image(getSprite("potion-blue"), 400, 250, 32, 32)
     // image(getSprite("boeken-1"), 250, 400, 32, 32)
 
