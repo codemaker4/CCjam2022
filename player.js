@@ -38,7 +38,7 @@ class Player {
     }
 
     tick() {
-        this.vel.mult(0.9);
+        this.vel.mult(1);
         this.vel.y += 0.1;
         if (this.pressButtons.includes("up") && this.framesSinceOnGround < 5) this.vel.y = -1;
         if (this.holdButtons.includes("left")) this.vel.x = -1;
@@ -57,6 +57,7 @@ class Player {
                 if (this.pos.y < platform.pos.y) { // player on top of platform
                     this.framesSinceOnGround = 0;
                     this.pos.y = platform.pos.y - platform.halfSize.y - this.halfSize.y;
+                    this.vel.y = min(this.vel.y, 0);
                 }
             }
         }
