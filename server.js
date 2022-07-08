@@ -26,6 +26,34 @@ app.get('/', (req, res) => {
     res.sendFile(__dirname + '/index.html')
 })
 
+app.get('/main.js', (req, res) => {
+    res.sendFile(__dirname + '/main.js')
+})
+
+app.get('/player.js', (req, res) => {
+    res.sendFile(__dirname + '/player.js')
+})
+
+app.get('/world.js', (req, res) => {
+    res.sendFile(__dirname + '/world.js')
+})
+
+app.get('/preloadSprites.js', (req, res) => {
+    res.sendFile(__dirname + '/preloadSprites.js')
+})
+
+app.get('/socket.js', (req, res) => {
+    res.sendFile(__dirname + '/socket.js')
+})
+
+app.get('/platform.js', (req, res) => {
+    res.sendFile(__dirname + '/platform.js')
+})
+
+app.get('/node_modules/socket.io/client-dist/socket.io.js', (req, res) => {
+    res.sendFile(__dirname + '/node_modules/socket.io/client-dist/socket.io.js')
+})
+
 
 
 
