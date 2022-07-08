@@ -1,6 +1,6 @@
 class World {
     constructor() {
-        this.size = createVector(1920, 1080);
+        this.size = createVector(1152, 642);
         this.platforms = []; // array of platform objects;
         this.players = []; // array of player objects
     }
