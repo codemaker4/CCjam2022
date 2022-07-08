@@ -1,7 +1,17 @@
+let players = [];
+let thisPlayerName = prompt("Geef je nickname");
+
+let world = new World();
+
 function setup() {
-    createCanvas(innerWidth, innerHeight);
+    createCanvas(windowWidth, windowHeight);
 }
-  
+
+function windowResized() {
+    resizeCanvas(windowWidth, windowHeight);
+    redraw();
+}
+
 function draw() {
     if (mouseIsPressed) {
         fill(0);
