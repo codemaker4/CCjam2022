@@ -22,7 +22,7 @@ function setup() {
     water = new Water(world.size.y * 2);
 
     world.platforms = [
-        new Platform(createVector(world.size.x/2, world.size.y), createVector(world.size.x*0.9, 20), getSprite("platform-1")),
+        new Platform(createVector(world.size.x/2, world.size.y), createVector(1000, 32), getSprite("platform-1")),
         new Platform(createVector(250, 500), createVector(200, 32), getSprite("platform-1")),
         new Platform(createVector(850, 300), createVector(186/2, 32), getSprite("drawer")),
         new Platform(createVector(500, 550), createVector(186/2, 32), getSprite("drawer")),
@@ -111,7 +111,10 @@ function draw() {
     image(getSprite("shit"), world.size.x/2 - 32, 75, 64, 64)
 
     textSize(32);
-        fill(200, 200, 200)
-        text(remainingtime, world.size.x/2, 50)
+    fill(200, 200, 200)
+    stroke(0, 127, 0, 127);
+    strokeWeight(4);
+    textAlign(CENTER)
+    text(remainingtime, world.size.x/2, 50)
 
   }

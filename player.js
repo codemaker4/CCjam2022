@@ -38,7 +38,6 @@ class Player {
     }
 
     tick(world) {
-        console.log(this.y);
         if(this.y > water.y){
             console.log(this.id, " died")
             if(this.id == 1){
@@ -51,7 +50,7 @@ class Player {
 
         }
 
-        this.animationTimer += 0.1;
+        this.animationTimer += 0.2;
         if (this.framesSinceOnGround < 2 && this.y > 120) {
             this.dx *= 0.5;
         } else {

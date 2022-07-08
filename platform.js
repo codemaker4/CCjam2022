@@ -15,18 +15,17 @@ class Platform {
                 this.sprite,
                 this.pos.x-this.halfSize.x+xOff, // x
                 this.pos.y-this.halfSize.y, // y
-                min(this.sprite.width, this.size.x-xOff), // width
+                min(this.sprite.width/2, this.size.x-xOff), // width
                 this.size.y, // height
                 0, // source x
                 0, // source y
-                min(this.sprite.width, this.size.x-xOff)*2, // source width
+                min(this.sprite.width/2, this.size.x-xOff)*2, // source width
                 this.size.y*2, // source height
             )
         }
 
         noFill();
-        stroke(255, 127);
-        strokeWeight(5);
+        noStroke();
         rect(
             this.pos.x - this.size.x/2,
             this.pos.y - this.size.y/2,
