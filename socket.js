@@ -13,7 +13,7 @@ const nickname = "nickname"
 const socket = io(socketURL, {query: "gameCode=" + gamecode})
 
 
-function playerUpdate(playerData){
+function doPlayerUpdate(playerData){
     socket.emit("playerUpdate", playerData)
 
 }
