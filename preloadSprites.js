@@ -23,8 +23,8 @@ function preload(){
     staticSprites = [
         new Sprite("static/assets/platform_wood_1.png", "platform-1"),
         new Sprite("static/assets/background.png", "background"),
-        new Sprite("static/assets/jar.png", "jar"),
-        new Sprite("static/assets/drawer.png", "drawer"),
+        new Sprite("static/assets/Jar.png", "jar"),
+        new Sprite("static/assets/Drawer.png", "drawer"),
         new Sprite("static/assets/water.png", "water"),
         new Sprite("static/assets/Peak Shit.png", "shit"),
         new Sprite("static/assets/Potion Blue/potion_blue_1.png", "potion-blue"),
