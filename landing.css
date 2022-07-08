@@ -25,7 +25,7 @@ body > p {
     color: #f2f7da;
     display: flex;
     justify-content: center;
-    font-family: monospace;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
 input {
@@ -52,5 +52,5 @@ input {
     size: 2vh;
     display: flex;
     justify-content: center;
-    font-family: monospace;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
