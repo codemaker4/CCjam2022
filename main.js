@@ -11,8 +11,8 @@ function setup() {
     world = new World();
 
     world.platforms = [
-        new Platform(createVector(world.size.x/2, world.size.y), createVector(world.size.x*0.9, 20), staticSprites.platforms[0].img),
-        new Platform(createVector(world.size.x/2, world.size.y / 4 * 3), createVector(200, 32), staticSprites.platforms[0].img)
+        new Platform(createVector(world.size.x/2, world.size.y), createVector(world.size.x*0.9, 20), getSprite("platform-1")),
+        new Platform(createVector(world.size.x/2, world.size.y / 4 * 3), createVector(200, 32), getSprite("platform-1"))
 
     ];
 
