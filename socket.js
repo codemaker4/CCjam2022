@@ -13,7 +13,7 @@ const nickname = "nickname"
 const socket = io(socketURL, {query: "gameCode=" + gamecode})
 
 
-function playerUpdate(playerData){
+function doPlayerUpdate(playerData){
     socket.emit("playerUpdate", playerData)
 
 }
@@ -22,3 +22,12 @@ socket.on("playerUpdate", (gameData) => {
     console.log("updated players")
     updatePlayers(gameData)
 })
+
+
+function updatePlayers(gameData){
+    gameData.forEach(player => {
+        console.log(player)
+    })
+
+    world.getPlayer(gameData)
+}
