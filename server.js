@@ -54,6 +54,10 @@ app.get('/water.js', (req, res) => {
     res.sendFile(__dirname + '/water.js')
 })
 
+app.get('/landing.html', (req, res) => {
+    res.sendFile(__dirname + '/landing.html')
+})
+
 app.get('/node_modules/socket.io/client-dist/socket.io.js', (req, res) => {
     res.sendFile(__dirname + '/node_modules/socket.io/client-dist/socket.io.js')
 })
