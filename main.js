@@ -7,12 +7,12 @@ let world;
 const updateFrames = 60
 
 function setup() {
-    createCanvas(windowWidth, windowHeight);
+    createCanvas(innerWidth, innerHeight);
 
     world = new World();
 
     world.platforms = [
-        new Platform(createVector(world.size.x/2, world.size.y), createVector(world.size.x*0.9, 20), getSprite("platform-1")),
+        new Platform(createVector(world.size.x/2, world.size.y-10), createVector(world.size.x*0.9, 20), getSprite("platform-1")),
         new Platform(createVector(world.size.x/2, world.size.y / 4 * 3), createVector(200, 32), getSprite("platform-1")),
         new Platform(createVector(world.size.x/2, world.size.y / 5 * 4), createVector(186/2, 32), getSprite("drawer"))
     ];
@@ -66,13 +66,15 @@ function keyReleased() {
 }
 
 function windowResized() {
-    resizeCanvas(windowWidth, windowHeight);
+    resizeCanvas(innerWidth, innerHeight);
     redraw();
 }
 
 function draw() {
-    background(123)
-    scale(0.8);
+    background(123);
+    translate(width/2, height/2);
+    scale(Math.min(width/world.size.x, height/world.size.y));
+    translate(-world.size.x/2, -world.size.y/2)
     image(getSprite("background"), 0,0, world.size.x, world.size.y);
     noFill();
     stroke(0);
