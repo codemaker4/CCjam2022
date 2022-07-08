@@ -11,6 +11,8 @@ class Water {
 
     draw() {
         this.y = this.y - waterSpeed
+        push();
+        translate(Math.sin(Date.now()/500)*50, 0);
         image(
             getSprite("water"),
             0, // x
@@ -32,5 +34,7 @@ class Water {
             world.size.x, // width
             world.size.y, // height
         )
+
+        pop();
     }
 }
