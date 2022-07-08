@@ -46,7 +46,7 @@ class Player {
         }
         this.dy += 0.8;
         if (this.holdButtons.includes("up") && this.framesSinceOnGround < 5) {
-            this.dy = -10;
+            this.dy = -15;
             this.setAnimation("jump");
         }
         if (this.holdButtons.includes("left")) {
@@ -94,7 +94,6 @@ class Player {
                 this.y - this.sizeY/2 < player.y + player.sizeX/2 && 
                 this.x < player.x
             ) {
-                console.log(`collision between ${this.name} and player ${player}`);
                 let depth = (this.x + this.sizeX/2) - (player.x - player.sizeX/2);
                 this.x -= depth/2;
                 player.x += depth/2;
