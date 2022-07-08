@@ -35,11 +35,11 @@ class Player {
     }
 
     tick(world) {
-        this.vel.x *= 0.8
-        this.vel.y += 0.3;
-        if (this.holdButtons.includes("up") && this.framesSinceOnGround < 5) this.vel.y = -15;
-        if (this.holdButtons.includes("left")) this.vel.x = -15;
-        if (this.holdButtons.includes("right")) this.vel.x = 15;
+        this.vel.x *= 0.5;
+        this.vel.y += 0.8;
+        if (this.holdButtons.includes("up") && this.framesSinceOnGround < 5) this.vel.y = -20;
+        if (this.holdButtons.includes("left")) this.vel.x -= 8;
+        if (this.holdButtons.includes("right")) this.vel.x += 8;
         this.pos.add(this.vel);
 
         for (let i = 0; i < world.platforms.length; i++) {
@@ -51,7 +51,7 @@ class Player {
                 this.pos.y - this.halfSize.y < platform.pos.y + platform.halfSize.y
             ) {
                 console.log(`collision between ${this.name} and platform ${i}`);
-                if (this.pos.y < platform.pos.y) { // player on top of platform
+                if (this.pos.y < platform.pos.y && this.vel.y > 0) { // player on top of platform and going down
                     this.framesSinceOnGround = 0;
                     this.pos.y = platform.pos.y - platform.halfSize.y - this.halfSize.y;
                     this.vel.y = min(this.vel.y, 0);
