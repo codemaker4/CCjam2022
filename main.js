@@ -23,11 +23,8 @@ function setup() {
         new Platform(createVector(world.size.x/2, 150), createVector(186/2, 32), getSprite("drawer"))
     ];
 
-    setTimeout(() => {
-        world.players.push(new Player(1, thisPlayerName1, world.size.x/3, 500, 0, 0));
-        world.players.push(new Player(2, thisPlayerName2, world.size.x/3 *2, 500, 0, 0));
-        socket.emit("newPlayer", thisPlayerName1);
-    }, 1000);
+    world.players.push(new Player(1, thisPlayerName1, world.size.x/3, 500, 0, 0));
+    world.players.push(new Player(2, thisPlayerName2, world.size.x/3 *2, 500, 0, 0));
 }
 
 const KEY_CODES1 = {
