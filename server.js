@@ -14,11 +14,7 @@ app.use(function(req, res, next) {
 
 
 // static files are stored in 'public' folder
-app.use(express.static('public'))
-
-// // use bodyparser for parsing POST requests
-// app.use(bodyParser.urlencoded({ extended: false }))
-// app.use(bodyParser.json())
+app.use(express.static('static'))
 
 // Data object (needs to be moved to database)
 let gameData = {
@@ -27,7 +23,7 @@ let gameData = {
 
 // routes for Home, join and host page
 app.get('/', (req, res) => {
-    res.sendFile(__dirname + '/frontend/index.html')
+    res.sendFile(__dirname + '/index.html')
 })
 
 
