@@ -95,8 +95,8 @@ function draw() {
         remainingtime = countdown - frameCount / 60
         
     }
-    if(countdown - frameCount / 60 <0){
-        waterSpeed = 0.3
+    if(countdown - 10 - frameCount / 60 <0){
+        waterSpeed = 1
     }
 
     image(getSprite("shit"), world.size.x/2 - 32, 75, 64, 64)
