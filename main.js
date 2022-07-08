@@ -12,7 +12,7 @@ function setup() {
     world.platforms = [
         new Platform(createVector(world.size.x/2, world.size.y), createVector(world.size.x*0.9, 20), getSprite("platform-1")),
         new Platform(createVector(world.size.x/2, world.size.y / 4 * 3), createVector(200, 32), getSprite("platform-1")),
-        new Platform(createVector(world.size.x/2, world.size.y / 5), createVector(186/2, 32), getSprite("drawer"))
+        new Platform(createVector(world.size.x/2, world.size.y / 5 * 4), createVector(186/2, 32), getSprite("drawer"))
     ];
 
     setTimeout(() => {

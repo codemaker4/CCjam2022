@@ -62,6 +62,6 @@ class Player {
         fill('blue');
         stroke(0);
         strokeWeight(2);
-        rect(this.x - this.sizeX/2, this.y - this.sizeY/2, this.sizeX, this.sizeY);
+        image(getSprite("player1"), this.x - this.sizeX/2, this.y - this.sizeY/2, this.sizeX, this.sizeY);
     }
 }
