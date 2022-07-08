@@ -12,7 +12,7 @@ function setup() {
     createCanvas(innerWidth, innerHeight);
 
     world = new World();
-    water = new Water(world.size.y);
+    water = new Water(world.size.y * 2);
 
     world.platforms = [
         new Platform(createVector(world.size.x/2, world.size.y), createVector(world.size.x*0.9, 20), getSprite("platform-1")),
@@ -92,7 +92,7 @@ function draw() {
         remainingtime = countdown - frameCount / 60
         
     }
-    if(countdown - 10 - frameCount / 60 <0){
+    if(countdown - 20 - frameCount / 60 <0){
         waterSpeed = 1
     }
     world.tick();
