@@ -1,10 +1,12 @@
 class Player {
-    constructor(name, pos, vel, color, holdButtons = [], pressButtons = []) {
+    constructor(name, x, y, dx, dy, holdButtons = [], pressButtons = []) {
         this.name = name; // float number 0 - 1, made with Math.random()
-        this.pos = pos; // p5 vector
-        this.vel = vel; // p5 vector
-        this.size = createVector(60,60);
-        this.color = color; // p5 color temporary
+        this.x = x;
+        this.y = y;
+        this.dx = dx;
+        this.dy = dy;
+        this.sizeX = 60;
+        this.sizeY = 60;
         this.holdButtons = holdButtons; // array of strings representing buttons
         this.pressButtons = pressButtons; // array of strings representing buttons, cleared every frame
         this.framesSinceOnGround = 100000; // the amount of frames since the last ground collision.
@@ -26,35 +28,28 @@ class Player {
         }
     }
 
-    get prevPos() {
-        return this.pos.copy().sub(this.vel);
-    }
-
-    get halfSize() {
-        return this.size.copy().div(2);
-    }
-
     tick(world) {
-        this.vel.x *= 0.5;
-        this.vel.y += 0.8;
-        if (this.holdButtons.includes("up") && this.framesSinceOnGround < 5) this.vel.y = -20;
-        if (this.holdButtons.includes("left")) this.vel.x -= 8;
-        if (this.holdButtons.includes("right")) this.vel.x += 8;
-        this.pos.add(this.vel);
+        this.dx *= 0.5;
+        this.dy += 0.8;
+        if (this.holdButtons.includes("up") && this.framesSinceOnGround < 5) this.dy = -20;
+        if (this.holdButtons.includes("left")) this.dx -= 8;
+        if (this.holdButtons.includes("right")) this.dx += 8;
+        
+        this.x += this.dx;
+        this.y += this.dy;
 
-        for (let i = 0; i < world.platforms.length; i++) {
-            const platform = world.platforms[i];
+        for (const platform of world.platforms) {
             if (
-                this.pos.x + this.halfSize.x > platform.pos.x - platform.halfSize.x && 
-                this.pos.x - this.halfSize.x < platform.pos.x + platform.halfSize.x &&
-                this.pos.y + this.halfSize.y > platform.pos.y - platform.halfSize.y &&
-                this.pos.y - this.halfSize.y < platform.pos.y + platform.halfSize.y
+                this.x + this.sizeX/2 > platform.pos.x - platform.halfSize.x && 
+                this.x - this.sizeX/2 < platform.pos.x + platform.halfSize.x &&
+                this.y + this.sizeY/2 > platform.pos.y - platform.halfSize.y &&
+                this.y - this.sizeY/2 < platform.pos.y + platform.halfSize.y
             ) {
-                console.log(`collision between ${this.name} and platform ${i}`);
-                if (this.pos.y < platform.pos.y && this.vel.y > 0) { // player on top of platform and going down
+                console.log(`collision between ${this.name} and platform ${platform}`);
+                if (this.y < platform.pos.y && this.dy > 0) { // player on top of platform and going down
                     this.framesSinceOnGround = 0;
-                    this.pos.y = platform.pos.y - platform.halfSize.y - this.halfSize.y;
-                    this.vel.y = min(this.vel.y, 0);
+                    this.y = platform.pos.y - platform.halfSize.y - this.sizeY/2;
+                    this.dy = min(this.dy, 0);
                 }
             }
         }
@@ -64,9 +59,9 @@ class Player {
     }
 
     draw() {
-        fill(this.color);
+        fill('blue');
         stroke(0);
         strokeWeight(2);
-        rect(this.pos.x - this.size.x/2, this.pos.y - this.size.y/2, this.size.x, this.size.y);
+        rect(this.x - this.sizeX/2, this.y - this.sizeY/2, this.sizeX, this.sizeY);
     }
 }

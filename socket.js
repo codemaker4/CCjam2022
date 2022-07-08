@@ -29,14 +29,9 @@ function updatePlayers(gameData){
         player = JSON.parse(player)
         playerObj = world.getPlayer(player["name"])
 
-        console.log(player.pos, playerObj.pos)
-        world.getPlayer(player["name"])["pos"].set(player["pos"])
-        // world.getPlayer(player["name"])["vel"] = player["vel"]
-        // world.getPlayer(player["name"])["size"] = player["size"]
-        // world.getPlayer(player["name"])["color"] = player["color"]
-        // world.getPlayer(player["name"])["holdButtons"] = player["holdButtons"]
-        // world.getPlayer(player["name"])["pressButtons"] = player["pressButtons"]
-        // world.getPlayer(player["name"])["framesSinceOnGround"] = player["framesSinceOnGround"]
+        for (const property of ["x", "y", "dx", "dy"]) {
+            world.getPlayer(player["name"])[property] = player[property];
+        }
     })
 
 }
