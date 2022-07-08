@@ -5,11 +5,19 @@ class Player {
         this.y = y;
         this.dx = dx;
         this.dy = dy;
+        this.animationTimer = 0;
+        this.animationType = "fly"; // fly, idle, jump, walk;
+        this.direction = "right";
         this.sizeX = 60;
         this.sizeY = 60;
         this.holdButtons = holdButtons; // array of strings representing buttons
         this.pressButtons = pressButtons; // array of strings representing buttons, cleared every frame
         this.framesSinceOnGround = 100000; // the amount of frames since the last ground collision.
+    }
+
+    setAnimation(animationType) {
+        this.animationTimer = 0;
+        this.animationType = animationType;
     }
 
     buttonDown(buttonName) {
@@ -29,11 +37,21 @@ class Player {
     }
 
     tick(world) {
+        this.animationTimer += 0.1;
         this.dx *= 0.5;
         this.dy += 0.8;
-        if (this.holdButtons.includes("up") && this.framesSinceOnGround < 5) this.dy = -20;
-        if (this.holdButtons.includes("left")) this.dx -= 8;
-        if (this.holdButtons.includes("right")) this.dx += 8;
+        if (this.holdButtons.includes("up") && this.framesSinceOnGround < 5) {
+            this.dy = -10;
+            this.setAnimation("jump");
+        }
+        if (this.holdButtons.includes("left")) {
+            this.dx -= 3;
+            this.direction = "left";
+        }
+        if (this.holdButtons.includes("right")) {
+            this.dx += 3;
+            this.direction = "right";
+        }
         
         this.x += this.dx;
         this.y += this.dy;
@@ -54,14 +72,65 @@ class Player {
             }
         }
 
+        switch (this.animationType) {
+            case "idle":
+                if (this.framesSinceOnGround > 3) {
+                    this.setAnimation("fly");
+                } else if (abs(this.dx) > 1) {
+                    this.setAnimation("walk");
+                } else if (this.animationTimer >= 3) {
+                    this.animationTimer = 0;
+                }
+                break;
+            case "walk":
+                if (this.framesSinceOnGround > 3) {
+                    this.setAnimation("fly");
+                } else if (abs(this.dx) < 1) {
+                    this.setAnimation("idle");
+                } else if (this.animationTimer >= 6) {
+                    this.animationTimer = 0;
+                }
+                break;
+            case "jump":
+                if (this.dy >= 0) {
+                    this.setAnimation("fly");
+                } else if (this.animationTimer >= 3) {
+                    this.animationTimer = 2;
+                }
+                break;
+            case "fly":
+                if (this.framesSinceOnGround < 3) {
+                    if (abs(this.dx) > 1) {
+                        this.setAnimation("walk");
+                    } else {
+                        this.setAnimation("idle");
+                    }
+                } else if (this.animationTimer >= 6) {
+                    this.animationTimer = 0;
+                }
+                break;
+        }
+
         this.framesSinceOnGround += 1;
         this.pressButtons = [];
     }
 
     draw() {
+        push()
+        translate(this.x, 0);
+        if (this.direction == "left") {
+            scale(-1, 1);
+        }
         fill('blue');
         stroke(0);
         strokeWeight(2);
-        image(getSprite("player1"), this.x - this.sizeX/2, this.y - this.sizeY/2, this.sizeX, this.sizeY);
+        image(
+            getSprite(`${this.animationType}_${Math.floor(this.animationTimer)}`),
+            - this.sizeX/2,
+            this.y - this.sizeY/2,
+            this.sizeX,
+            this.sizeY
+        );
+        pop();
     }
 }
