@@ -4,13 +4,11 @@ class Player {
         this.name = name; // float number 0 - 1, made with Math.random()
         this.pos = pos; // p5 vector
         this.vel = vel; // p5 vector
-        this.size = createVector(50,50);
+        this.size = createVector(60,60);
         this.color = color; // p5 color temporary
         this.holdButtons = holdButtons; // array of strings representing buttons
         this.pressButtons = pressButtons; // array of strings representing buttons, cleared every frame
         this.framesSinceOnGround = 100000; // the amount of frames since the last ground collision.
-        
-        socket.emit("newPlayer", name)
     }
 
     buttonDown(buttonName) {

@@ -9,13 +9,16 @@ function setup() {
     world = new World();
 
     world.platforms = [
-        new Platform(createVector(world.size.x/2, world.size.y), createVector(world.size.x*0.9, 20))
-    ];
-}
+        new Platform(createVector(world.size.x/2, world.size.y), createVector(world.size.x*0.9, 20), staticSprites.platforms[0].img),
+        new Platform(createVector(world.size.x/2, world.size.y / 4 * 3), createVector(200, 32), staticSprites.platforms[0].img)
 
-setTimeout(() => {
-    world.players.push(new Player(world, thisPlayerName, createVector(world.size.x/2, 200), createVector(0,0), color('blue')));
-}, 1000);
+    ];
+
+    setTimeout(() => {
+        world.players.push(new Player(world, thisPlayerName, createVector(world.size.x/2, 200), createVector(0,0), color('blue')));
+        socket.emit("newPlayer", thisPlayerName);
+    }, 1000);
+}
 
 const KEY_CODES = {
     87: "up",
@@ -49,7 +52,7 @@ function windowResized() {
 
 function draw() {
     background(255);
-    scale(0.5);
+    scale(0.8);
     noFill();
     stroke(0);
     strokeWeight(2);
