@@ -63,7 +63,7 @@ class Player {
                 this.y + this.sizeY/2 > platform.pos.y - platform.halfSize.y &&
                 this.y - this.sizeY/2 < platform.pos.y + platform.halfSize.y
             ) {
-                console.log(`collision between ${this.name} and platform ${platform}`);
+                // console.log(`collision between ${this.name} and platform ${platform}`);
                 if (this.y < platform.pos.y && this.dy > 0) { // player on top of platform and going down
                     this.framesSinceOnGround = 0;
                     this.y = platform.pos.y - platform.halfSize.y - this.sizeY/2;

@@ -1,4 +1,6 @@
-let thisPlayerName = `player#${Math.floor(Math.random()*10000)}`;
+let thisPlayerName1 = `player#${Math.floor(Math.random()*10000)}`;
+let thisPlayerName2 = `player#${Math.floor(Math.random()*10000)}`;
+
 
 let world;
 
@@ -16,12 +18,13 @@ function setup() {
     ];
 
     setTimeout(() => {
-        world.players.push(new Player(thisPlayerName, world.size.x/2, 200, 0, 0));
-        socket.emit("newPlayer", thisPlayerName);
+        world.players.push(new Player(thisPlayerName1, world.size.x/3, 200, 0, 0));
+        world.players.push(new Player(thisPlayerName2, world.size.x/3 *2, 200, 0, 0));
+        socket.emit("newPlayer", thisPlayerName1);
     }, 1000);
 }
 
-const KEY_CODES = {
+const KEY_CODES1 = {
     87: "up",
     83: "down",
     65: "left",
@@ -29,20 +32,35 @@ const KEY_CODES = {
     32: "space"
 }
 
+const KEY_CODES2 = {
+    38: "up",
+    40: "down",
+    37: "left",
+    39: "right"
+}
+
 function keyPressed() {
-    let player = world.getPlayer(thisPlayerName);
-    if (player) {
-        if (KEY_CODES[keyCode]) {
-            player.buttonDown(KEY_CODES[keyCode]);
+    let player1 = world.getPlayer(thisPlayerName1);
+    let player2 = world.getPlayer(thisPlayerName2);
+
+    if (player1 && player2) {
+        if (KEY_CODES1[keyCode]) {
+            player1.buttonDown(KEY_CODES1[keyCode]);
+        } else if (KEY_CODES2[keyCode]) {
+            player2.buttonDown(KEY_CODES2[keyCode]);
         }
     }
 }
 
 function keyReleased() {
-    let player = world.getPlayer(thisPlayerName);
-    if (player) {
-        if (KEY_CODES[keyCode]) {
-            player.buttonUp(KEY_CODES[keyCode]);
+    let player1 = world.getPlayer(thisPlayerName1);
+    let player2 = world.getPlayer(thisPlayerName2);
+
+    if (player1 && player2) {
+        if (KEY_CODES1[keyCode]) {
+            player1.buttonUp(KEY_CODES1[keyCode]);
+        } else if (KEY_CODES2[keyCode]) {
+            player2.buttonUp(KEY_CODES2[keyCode]);
         }
     }
 }
@@ -64,6 +82,6 @@ function draw() {
     world.draw();
 
     if(frameCount % updateFrames == 0){
-        doPlayerUpdate(JSON.stringify(world.getPlayer(thisPlayerName)))
+        doPlayerUpdate(JSON.stringify(world.getPlayer(thisPlayerName1)))
     }
   }
