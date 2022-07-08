@@ -74,15 +74,11 @@ function windowResized() {
 }
 
 function draw() {
-    background(123);
+    background("#030B17");
+    image(getSprite("background"), 0,0, width, height);
     translate(width/2, height/2);
-    scale(Math.min(width/world.size.x, height/world.size.y));
+    scale(Math.min(width/world.size.x, height/world.size.y) * 0.8);
     translate(-world.size.x/2, -world.size.y/2)
-    image(getSprite("background"), 0,0, world.size.x, world.size.y);
-    noFill();
-    stroke(0);
-    strokeWeight(2);
-    rect(0, 0, world.size.x, world.size.y);
     world.tick();
     world.draw();
     water.draw();

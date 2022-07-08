@@ -18,5 +18,19 @@ class Water {
             world.size.x, // width
             world.size.y, // height
         )
+        image(
+            getSprite("water"),
+            -world.size.x, // x
+            this.y, // y
+            world.size.x, // width
+            world.size.y, // height
+        )
+        image(
+            getSprite("water"),
+            +world.size.x, // x
+            this.y, // y
+            world.size.x, // width
+            world.size.y, // height
+        )
     }
 }
