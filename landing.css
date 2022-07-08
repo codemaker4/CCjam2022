@@ -1,0 +1,56 @@
+body {
+    height: 100vh;
+    margin: 0;
+    background-color: #26464b;
+}
+
+.logo {
+    display: flex;
+    height: 50vh;
+}
+
+.logo > img {
+    margin: auto;
+    height: 80%;
+    -ms-interpolation-mode: nearest-neighbor;
+    image-rendering: pixelated;
+}
+
+.name {
+    display: flex;
+    justify-content: center;
+}
+
+body > p {
+    color: #f2f7da;
+    display: flex;
+    justify-content: center;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+input {
+    background-color: #f2f7da;
+    color: #26464b;
+}
+
+.buttons {
+    display: flex;
+}
+
+.buttons img {
+    margin: auto;
+    -ms-interpolation-mode: nearest-neighbor;
+    image-rendering: pixelated;
+}
+
+.buttons img:hover {
+    filter: brightness(0.75);
+}
+
+.footer {
+    color: #f2f7da;
+    size: 2vh;
+    display: flex;
+    justify-content: center;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
