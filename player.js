@@ -39,18 +39,30 @@ class Player {
 
     tick(world) {
         this.animationTimer += 0.1;
-        this.dx *= 0.5;
+        if (this.framesSinceOnGround < 2) {
+            this.dx *= 0.5;
+        } else {
+            this.dx *= 0.9;
+        }
         this.dy += 0.8;
         if (this.holdButtons.includes("up") && this.framesSinceOnGround < 5) {
             this.dy = -10;
             this.setAnimation("jump");
         }
         if (this.holdButtons.includes("left")) {
-            this.dx -= 3;
+            if (this.framesSinceOnGround < 2) {
+                this.dx -= 3;
+            } else {
+                this.dx -= 1;
+            }
             this.direction = "left";
         }
         if (this.holdButtons.includes("right")) {
-            this.dx += 3;
+            if (this.framesSinceOnGround < 2) {
+                this.dx += 3;
+            } else {
+                this.dx += 1;
+            }
             this.direction = "right";
         }
         
@@ -73,9 +85,27 @@ class Player {
             }
         }
 
+        for (const player of world.players) {
+            if (player == this) continue;
+            if (
+                this.x + this.sizeX/2 > player.x - player.sizeX/2 && 
+                this.x - this.sizeX/2 < player.x + player.sizeX/2 &&
+                this.y + this.sizeY/2 > player.y - player.sizeX/2 &&
+                this.y - this.sizeY/2 < player.y + player.sizeX/2 && 
+                this.x < player.x
+            ) {
+                console.log(`collision between ${this.name} and player ${player}`);
+                let depth = (this.x + this.sizeX/2) - (player.x - player.sizeX/2);
+                this.x -= depth/2;
+                player.x += depth/2;
+                this.dx -= 20;
+                player.dx += 20;
+            }
+        }
+
         switch (this.animationType) {
             case "idle":
-                if (this.framesSinceOnGround > 3) {
+                if (this.framesSinceOnGround > 2) {
                     this.setAnimation("fly");
                 } else if (abs(this.dx) > 1) {
                     this.setAnimation("walk");
@@ -84,7 +114,7 @@ class Player {
                 }
                 break;
             case "walk":
-                if (this.framesSinceOnGround > 3) {
+                if (this.framesSinceOnGround > 2) {
                     this.setAnimation("fly");
                 } else if (abs(this.dx) < 1) {
                     this.setAnimation("idle");
@@ -100,7 +130,7 @@ class Player {
                 }
                 break;
             case "fly":
-                if (this.framesSinceOnGround < 3) {
+                if (this.framesSinceOnGround < 2) {
                     if (abs(this.dx) > 1) {
                         this.setAnimation("walk");
                     } else {
