@@ -83,14 +83,14 @@ function draw() {
     stroke(0);
     strokeWeight(2);
     rect(0, 0, world.size.x, world.size.y);
-    world.tick();
-    world.draw();
-    water.draw();
+    
 
     image(getSprite("potion-yellow"), 850, 400, 32, 32)
     image(getSprite("potion-blue"), 400, 250, 32, 32)
-    image(getSprite("boeken-1"), 250, 400, 32, 32)
-
+    // image(getSprite("boeken-1"), 250, 400, 32, 32)
+    world.tick();
+    world.draw();
+    water.draw();
     if(frameCount % updateFrames == 0){
         doPlayerUpdate(JSON.stringify(world.getPlayer(thisPlayerName1)))
     }
@@ -106,7 +106,7 @@ function draw() {
     image(getSprite("shit"), world.size.x/2 - 32, 75, 64, 64)
 
     textSize(32);
-        fill(200, 200, 200)
-        text(remainingtime, world.size.x/2, 50)
+    fill(200, 200, 200)
+    text(remainingtime, world.size.x/2, 50)
 
   }

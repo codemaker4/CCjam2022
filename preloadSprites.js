@@ -28,9 +28,9 @@ function preload(){
         new Sprite("assets/water.png", "water"),
         new Sprite("assets/Peak Shit.png", "shit"),
         new Sprite("assets/Potion Blue/potion_blue_1.png", "potion-blue"),
-        new Sprite("assets/Potion Yellow/potion_yellow0.png", "potion-yellow"),
-        new Sprite("assets/sprite_boeken_0.png", "boeken-1"),
-        new Sprite("assets/sprite_boeken_1.png", "boeken-2")
+        new Sprite("assets/Potion Yellow/potion_yellow0.png", "potion-yellow")
+        // new Sprite("assets/sprite_boeken_0.png", "boeken-1"),
+        // new Sprite("assets/sprite_boeken_1.png", "boeken-2")
     ]
 
     addAnim("assets/fly_1_flying/fly_1_flying", "fly1_", 6);
