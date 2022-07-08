@@ -16,7 +16,7 @@ function setup() {
     ];
 
     setTimeout(() => {
-        world.players.push(new Player(thisPlayerName, createVector(world.size.x/2, 200), createVector(0,0), color('blue')));
+        world.players.push(new Player(thisPlayerName, world.size.x/2, 200, 0, 0));
         socket.emit("newPlayer", thisPlayerName);
     }, 1000);
 }
