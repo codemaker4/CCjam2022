@@ -34,7 +34,7 @@ class Player {
         return this.size.copy().div(2);
     }
 
-    tick(wprd) {
+    tick(world) {
         this.vel.x *= 0.8
         this.vel.y += 0.3;
         if (this.holdButtons.includes("up") && this.framesSinceOnGround < 5) this.vel.y = -15;
@@ -42,8 +42,8 @@ class Player {
         if (this.holdButtons.includes("right")) this.vel.x = 15;
         this.pos.add(this.vel);
 
-        for (let i = 0; i < this.world.platforms.length; i++) {
-            const platform = this.world.platforms[i];
+        for (let i = 0; i < world.platforms.length; i++) {
+            const platform = world.platforms[i];
             if (
                 this.pos.x + this.halfSize.x > platform.pos.x - platform.halfSize.x && 
                 this.pos.x - this.halfSize.x < platform.pos.x + platform.halfSize.x &&
