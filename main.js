@@ -1,6 +1,10 @@
 let thisPlayerName1 = `player#${Math.floor(Math.random()*10000)}`;
 let thisPlayerName2 = `player#${Math.floor(Math.random()*10000)}`;
 
+let sounds = {};
+
+let lastBoinkTime = Date.now();
+
 let world;
 let water;
 
@@ -11,15 +15,19 @@ const updateFrames = 60
 function setup() {
     createCanvas(innerWidth, innerHeight);
 
+    sounds.boink2 = loadSound("assets/boink.mp3");
+    sounds.boink = loadSound("assets/sound/boink.mp3");
+
     world = new World();
     water = new Water(world.size.y * 2);
 
     world.platforms = [
         new Platform(createVector(world.size.x/2, world.size.y), createVector(world.size.x*0.9, 20), getSprite("platform-1")),
         new Platform(createVector(250, 500), createVector(200, 32), getSprite("platform-1")),
-        new Platform(createVector(850, 450), createVector(186/2, 32), getSprite("drawer")),
+        new Platform(createVector(850, 300), createVector(186/2, 32), getSprite("drawer")),
         new Platform(createVector(500, 550), createVector(186/2, 32), getSprite("drawer")),
         new Platform(createVector(400, 300), createVector(200, 32), getSprite("platform-1")),
+        new Platform(createVector(750, 450), createVector(200, 32), getSprite("platform-1")),
         new Platform(createVector(world.size.x/2, 150), createVector(186/2, 32), getSprite("drawer"))
     ];
 

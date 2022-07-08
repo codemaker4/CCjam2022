@@ -58,6 +58,14 @@ app.get('/water.js', (req, res) => {
     res.sendFile(__dirname + '/water.js')
 })
 
+app.get('/p5.js', (req, res) => {
+    res.sendFile(__dirname + '/p5.js')
+})
+
+app.get('/p5.sound.js', (req, res) => {
+    res.sendFile(__dirname + '/p5.sound.js')
+})
+
 app.get('/landing.html', (req, res) => {
     res.sendFile(__dirname + '/landing.html')
 })

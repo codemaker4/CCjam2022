@@ -57,9 +57,10 @@ class Player {
             this.dx *= 0.9;
         }
         this.dy += 0.8;
-        if (this.holdButtons.includes("up") && this.framesSinceOnGround < 5) {
-            this.dy = -15;
+        if (this.holdButtons.includes("up") && this.framesSinceOnGround < 2) {
+            this.dy = -18;
             this.setAnimation("jump");
+            sounds.boink2.play();
         }
         if (this.holdButtons.includes("left")) {
             if (this.framesSinceOnGround < 2) {
@@ -106,6 +107,10 @@ class Player {
                 this.y - this.sizeY/2 < player.y + player.sizeX/2 && 
                 this.x < player.x
             ) {
+                if (Date.now() > lastBoinkTime + 200) {
+                    sounds.boink.play();
+                    lastBoinkTime = Date.now();
+                }
                 let depth = (this.x + this.sizeX/2) - (player.x - player.sizeX/2);
                 this.x -= depth/2;
                 player.x += depth/2;
