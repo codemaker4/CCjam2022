@@ -26,7 +26,7 @@ function setup() {
         new Platform(createVector(250, 500), createVector(200, 32), getSprite("platform-1")),
         new Platform(createVector(850, 300), createVector(186/2, 32), getSprite("drawer")),
         new Platform(createVector(500, 550), createVector(186/2, 32), getSprite("drawer")),
-        new Platform(createVector(400, 300), createVector(200, 32), getSprite("platform-1")),
+        new Platform(createVector(400, 350), createVector(200, 32), getSprite("platform-1")),
         new Platform(createVector(750, 450), createVector(200, 32), getSprite("platform-1")),
         new Platform(createVector(world.size.x/2, 150), createVector(186/2, 32), getSprite("drawer"))
     ];
@@ -89,7 +89,7 @@ function draw() {
     translate(-world.size.x/2, -world.size.y/2)
     
     image(getSprite("potion-yellow"), 800, 400, 32, 32)
-    image(getSprite("potion-blue"), 400, 250, 32, 32)
+    image(getSprite("potion-blue"), 400, 300, 32, 32)
     // image(getSprite("boeken-1"), 250, 400, 32, 32)
 
     if(frameCount % updateFrames == 0){
