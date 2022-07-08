@@ -9,6 +9,8 @@ class Player {
         this.holdButtons = holdButtons; // array of strings representing buttons
         this.pressButtons = pressButtons; // array of strings representing buttons, cleared every frame
         this.framesSinceOnGround = 100000; // the amount of frames since the last ground collision.
+        
+        socket.emit("newPlayer", name)
     }
 
     buttonDown(buttonName) {

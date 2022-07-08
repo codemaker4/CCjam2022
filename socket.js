@@ -11,7 +11,6 @@ const nickname = "nickname"
 
 // connect to websocket via socket.io
 const socket = io(socketURL, {query: "gameCode=" + gamecode})
-socket.emit("newPlayer", nickname)
 
 
 function playerUpdate(playerData){

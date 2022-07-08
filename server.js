@@ -38,6 +38,7 @@ io.on('connection', (socket) => {
     console.log("New user, room = ", Array.from(socket.rooms)[1])
 
     socket.on('newPlayer', (name) => {
+        console.log("New player ", name)
         const gameCode = Array.from(socket.rooms)[1]
         gameData[gameCode].push({"nickname":name})
         // socket.in(gameCode).emit("newPlayer", name)
