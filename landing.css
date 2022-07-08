@@ -52,6 +52,7 @@ input {
 }
 
 .footer {
+    margin-top: 10vh;
     color: #f2f7da;
     size: 2vh;
     display: flex;
