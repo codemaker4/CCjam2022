@@ -3,6 +3,8 @@ let thisPlayerName = `player#${Math.floor(Math.random()*10000)}`;
 
 let world;
 
+const updateFrames = 60
+
 function setup() {
     createCanvas(windowWidth, windowHeight);
 
@@ -59,4 +61,8 @@ function draw() {
     rect(0, 0, world.size.x, world.size.y);
     world.tick();
     world.draw();
+
+    if(frameCount % updateFrames == 0){
+        playerUpdate(JSON.stringify(world.getPlayer(thisPlayerName)))
+    }
   }
