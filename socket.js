@@ -23,15 +23,19 @@ socket.on("playerUpdate", (gameData) => {
     updatePlayers(gameData)
 })
 
+socket.on("newPlayer", (name) => {
+    console.log("new player")
+})
+
 
 function updatePlayers(gameData){
     gameData.forEach(player => {
-        player = JSON.parse(player)
-        playerObj = world.getPlayer(player["name"])
-
+        // player = JSON.parse(player)
+        // playerObj = world.getPlayer(player["name"])
+        console.log(player)
+        // playerObj.x = player.x;
         for (const property of ["x", "y", "dx", "dy"]) {
             world.getPlayer(player["name"])[property] = player[property];
         }
     })
-
 }
