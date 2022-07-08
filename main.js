@@ -53,7 +53,7 @@ function windowResized() {
 }
 
 function draw() {
-    background(255);
+    background(127);
     scale(0.8);
     noFill();
     stroke(0);
