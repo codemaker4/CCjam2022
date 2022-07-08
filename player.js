@@ -4,7 +4,7 @@ class Player {
         this.name = name; // float number 0 - 1, made with Math.random()
         this.pos = pos; // p5 vector
         this.vel = vel; // p5 vector
-        this.size = createVector(20,20);
+        this.size = createVector(50,50);
         this.color = color; // p5 color temporary
         this.holdButtons = holdButtons; // array of strings representing buttons
         this.pressButtons = pressButtons; // array of strings representing buttons, cleared every frame
@@ -21,9 +21,9 @@ class Player {
     }
 
     buttonUp(buttonName) {
-        let i = this.holdButtons.indexOf(buttonName);
-        if (i) {
-            this.pressButtons.splice(i, 1);
+        console.log();
+        if (this.holdButtons.includes(buttonName)) {
+            this.holdButtons.splice(this.holdButtons.indexOf(buttonName), 1);
         } else {
             console.log(`released button ${buttonName} while it wasn't pressed`);
         }
@@ -38,11 +38,11 @@ class Player {
     }
 
     tick() {
-        this.vel.mult(1);
-        this.vel.y += 0.1;
-        if (this.pressButtons.includes("up") && this.framesSinceOnGround < 5) this.vel.y = -1;
-        if (this.holdButtons.includes("left")) this.vel.x = -1;
-        if (this.holdButtons.includes("right")) this.vel.x = 1;
+        this.vel.x *= 0.8
+        this.vel.y += 0.3;
+        if (this.holdButtons.includes("up") && this.framesSinceOnGround < 5) this.vel.y = -15;
+        if (this.holdButtons.includes("left")) this.vel.x = -15;
+        if (this.holdButtons.includes("right")) this.vel.x = 15;
         this.pos.add(this.vel);
 
         for (let i = 0; i < this.world.platforms.length; i++) {

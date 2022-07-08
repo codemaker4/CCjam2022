@@ -5,6 +5,10 @@ class World {
         this.players = []; // array of player objects
     }
 
+    getPlayer(name) {
+        return this.players.find(player => player.name == name);
+    }
+
     tick() {
         for (let i = 0; i < this.players.length; i++) {
             const player = this.players[i];

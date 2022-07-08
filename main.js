@@ -15,7 +15,32 @@ function setup() {
 
 setTimeout(() => {
     world.players.push(new Player(world, thisPlayerName, createVector(world.size.x/2, 200), createVector(0,0), color('blue')));
-}, 2000);
+}, 1000);
+
+const KEY_CODES = {
+    87: "up",
+    83: "down",
+    65: "left",
+    68: "right"
+}
+
+function keyPressed() {
+    let player = world.getPlayer(thisPlayerName);
+    if (player) {
+        if (KEY_CODES[keyCode]) {
+            player.buttonDown(KEY_CODES[keyCode]);
+        }
+    }
+}
+
+function keyReleased() {
+    let player = world.getPlayer(thisPlayerName);
+    if (player) {
+        if (KEY_CODES[keyCode]) {
+            player.buttonUp(KEY_CODES[keyCode]);
+        }
+    }
+}
 
 function windowResized() {
     resizeCanvas(windowWidth, windowHeight);
@@ -25,7 +50,7 @@ function windowResized() {
 function draw() {
     background(255);
     scale(0.5);
-    fill(0,0,0,0);
+    noFill();
     stroke(0);
     strokeWeight(2);
     rect(0, 0, world.size.x, world.size.y);
