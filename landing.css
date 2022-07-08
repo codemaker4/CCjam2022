@@ -32,6 +32,10 @@ body > p {
     font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
+a {
+    color: #74c4c4;;
+}
+
 body > a {
     color: #f2f7da;
     display: flex;
