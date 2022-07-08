@@ -38,6 +38,18 @@ class Player {
     }
 
     tick(world) {
+        if(this.y > water.y){
+            console.log(this.id, " died")
+            if(this.id == 1){
+                window.location.href = 'player2_gewonnen.html';
+            }
+            if(this.id == 2){
+                window.location.href = 'player1_gewonnen.html';
+            }
+
+
+        }
+
         this.animationTimer += 0.1;
         if (this.framesSinceOnGround < 2) {
             this.dx *= 0.5;

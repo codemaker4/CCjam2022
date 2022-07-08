@@ -66,7 +66,13 @@ app.get('/node_modules/socket.io/client-dist/socket.io.js', (req, res) => {
     res.sendFile(__dirname + '/node_modules/socket.io/client-dist/socket.io.js')
 })
 
+app.get('/player2_gewonnen.html', (req, res) => {
+    res.sendFile(__dirname + '/player2_gewonnen.html')
+})
 
+app.get('/player1_gewonnen.html', (req, res) => {
+    res.sendFile(__dirname + '/player1_gewonnen.html')
+})
 
 
 
