@@ -1,5 +1,7 @@
+let waterSpeed = 0
+
 class Water {
-    constructor(y, size, sprite) {
+    constructor(y) {
         this.y = y;
     }
 
@@ -8,18 +10,13 @@ class Water {
     }
 
     draw() {
-        for (let xOff = 0; xOff < this.size.x; xOff += this.sprite.width/2) {
-            image(
-                getSprite(water),
-                world.size.x/2, // x
-                this.y, // y
-                world.size.x, // width
-                world.size.y, // height
-                0, // source x
-                0, // source y
-                min(this.sprite.width, this.size.x-xOff)*2, // source width
-                this.size.y*2, // source height
-            )
-        }
+        this.y = this.y - waterSpeed
+        image(
+            getSprite("water"),
+            0, // x
+            this.y, // y
+            world.size.x, // width
+            world.size.y, // height
+        )
     }
 }

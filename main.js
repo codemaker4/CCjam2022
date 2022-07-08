@@ -1,15 +1,17 @@
 let thisPlayerName1 = `player#${Math.floor(Math.random()*10000)}`;
 let thisPlayerName2 = `player#${Math.floor(Math.random()*10000)}`;
 
-
 let world;
 
+const countdown = 30
+let remainingtime = countdown
 const updateFrames = 60
 
 function setup() {
     createCanvas(innerWidth, innerHeight);
 
     world = new World();
+    water = new Water(world.size.y);
 
     world.platforms = [
         new Platform(createVector(world.size.x/2, world.size.y-10), createVector(world.size.x*0.9, 20), getSprite("platform-1")),
@@ -82,8 +84,20 @@ function draw() {
     rect(0, 0, world.size.x, world.size.y);
     world.tick();
     world.draw();
+    water.draw();
 
     if(frameCount % updateFrames == 0){
         doPlayerUpdate(JSON.stringify(world.getPlayer(thisPlayerName1)))
     }
+
+    if(frameCount % 60 == 0 && countdown - frameCount / 60 >=0){
+        remainingtime = countdown - frameCount / 60
+        
+    }
+    if(countdown - frameCount / 60 <0){
+        waterSpeed = 0.3
+    }
+    textSize(32);
+        fill(200, 200, 200)
+        text(remainingtime, world.size.x/2, 100)
   }
