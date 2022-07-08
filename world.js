@@ -13,6 +13,10 @@ class World {
     }
 
     draw() {
+        for (let i = 0; i < this.platforms.length; i++) {
+            const platform = this.platforms[i];
+            platform.draw();
+        }
         for (let i = 0; i < this.players.length; i++) {
             const player = this.players[i];
             player.draw();
