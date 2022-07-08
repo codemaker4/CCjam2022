@@ -10,7 +10,7 @@ let water;
 
 const countdown = 30
 let remainingtime = countdown
-const updateFrames = 60
+// const updateFrames = 60
 
 function setup() {
     createCanvas(innerWidth, innerHeight);
@@ -92,9 +92,9 @@ function draw() {
     image(getSprite("potion-blue"), 400, 300, 32, 32)
     // image(getSprite("boeken-1"), 250, 400, 32, 32)
 
-    if(frameCount % updateFrames == 0){
-        doPlayerUpdate(JSON.stringify(world.getPlayer(thisPlayerName1)))
-    }
+    // if(frameCount % updateFrames == 0){
+    //     doPlayerUpdate(JSON.stringify(world.getPlayer(thisPlayerName1)))
+    // }
 
     if(frameCount % 60 == 0 && countdown - frameCount / 60 >=0){
         remainingtime = countdown - frameCount / 60
