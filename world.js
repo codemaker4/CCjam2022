@@ -1,0 +1,21 @@
+class World {
+    constructor() {
+        this.size = createVector(1920, 1080);
+        this.platforms = []; // array of platform objects;
+        this.players = []; // array of player objects
+    }
+
+    tick() {
+        for (let i = 0; i < this.players.length; i++) {
+            const player = this.players[i];
+            player.tick();
+        }
+    }
+
+    draw() {
+        for (let i = 0; i < this.players.length; i++) {
+            const player = this.players[i];
+            player.draw();
+        }
+    }
+}
