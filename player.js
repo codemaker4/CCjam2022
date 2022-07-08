@@ -1,5 +1,6 @@
 class Player {
-    constructor(name, x, y, dx, dy, holdButtons = [], pressButtons = []) {
+    constructor(id, name, x, y, dx, dy, holdButtons = [], pressButtons = []) {
+        this.id = id;
         this.name = name; // float number 0 - 1, made with Math.random()
         this.x = x;
         this.y = y;
@@ -125,7 +126,7 @@ class Player {
         stroke(0);
         strokeWeight(2);
         image(
-            getSprite(`${this.animationType}_${Math.floor(this.animationTimer)}`),
+            getSprite(`${this.animationType}${this.id}_${Math.floor(this.animationTimer)}`),
             - this.sizeX/2,
             this.y - this.sizeY/2,
             this.sizeX,

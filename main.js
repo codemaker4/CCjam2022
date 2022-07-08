@@ -18,8 +18,8 @@ function setup() {
     ];
 
     setTimeout(() => {
-        world.players.push(new Player(thisPlayerName1, world.size.x/3, 200, 0, 0));
-        world.players.push(new Player(thisPlayerName2, world.size.x/3 *2, 200, 0, 0));
+        world.players.push(new Player(1, thisPlayerName1, world.size.x/3, 200, 0, 0));
+        world.players.push(new Player(2, thisPlayerName2, world.size.x/3 *2, 200, 0, 0));
         socket.emit("newPlayer", thisPlayerName1);
     }, 1000);
 }

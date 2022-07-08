@@ -27,10 +27,15 @@ function preload(){
         new Sprite("assets/drawer.png", "drawer"),
     ]
 
-    addAnim("assets/fly_1_flying/fly_1_flying", "fly_", 6);
-    addAnim("assets/fly_1_idle/fly_1_idle", "idle_", 3);
-    addAnim("assets/fly_1_jumpup/fly_1_jumpup", "jump_", 3);
-    addAnim("assets/fly_1_walk/fly_1_walk", "walk_", 6);
+    addAnim("assets/fly_1_flying/fly_1_flying", "fly1_", 6);
+    addAnim("assets/fly_1_idle/fly_1_idle", "idle1_", 3);
+    addAnim("assets/fly_1_jumpup/fly_1_jumpup", "jump1_", 3);
+    addAnim("assets/fly_1_walk/fly_1_walk", "walk1_", 6);
+
+    addAnim("assets/fly_2_flying/fly_2_flying", "fly2_", 6);
+    addAnim("assets/fly_2_idle/fly_2_idle", "idle2_", 3);
+    addAnim("assets/fly_2_jumpup/fly_2_jumpup", "jump2_", 3);
+    addAnim("assets/fly_2_walk/fly_2_walk", "walk2_", 6);
 
 }
 
