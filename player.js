@@ -38,6 +38,7 @@ class Player {
     }
 
     tick(world) {
+        console.log(this.y);
         if(this.y > water.y){
             console.log(this.id, " died")
             if(this.id == 1){
@@ -51,7 +52,7 @@ class Player {
         }
 
         this.animationTimer += 0.1;
-        if (this.framesSinceOnGround < 2) {
+        if (this.framesSinceOnGround < 2 && this.y > 120) {
             this.dx *= 0.5;
         } else {
             this.dx *= 0.9;
@@ -63,7 +64,7 @@ class Player {
             sounds.boink2.play();
         }
         if (this.holdButtons.includes("left")) {
-            if (this.framesSinceOnGround < 2) {
+            if (this.framesSinceOnGround < 2 && this.y > 120) {
                 this.dx -= 3;
             } else {
                 this.dx -= 1;
@@ -71,7 +72,7 @@ class Player {
             this.direction = "left";
         }
         if (this.holdButtons.includes("right")) {
-            if (this.framesSinceOnGround < 2) {
+            if (this.framesSinceOnGround < 2 && this.y > 120) {
                 this.dx += 3;
             } else {
                 this.dx += 1;
